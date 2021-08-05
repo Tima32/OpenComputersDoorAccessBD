@@ -11,7 +11,7 @@ local com = require("component")
 local event = require("event")
 
 --global
-local clien_table = {}
+local client_table = {}
 
 function SaveClientTable()
     local table = ser.serialize(client_table);
@@ -29,6 +29,7 @@ function LoadClientTable()
 
     --Если админа нет добавим
     if client_table == nil or client_table[default_admin] == nil then
+        client_table[default_admin] = {};
         client_table[default_admin]["password"] = default_admin_pass;
         local access = {};
         access["read"] = true;
