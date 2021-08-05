@@ -28,7 +28,7 @@ function LoadClientTable()
     end
 
     --Если админа нет добавим
-    if client_table[default_admin] == nil then
+    if client_table == nil or client_table[default_admin] == nil then
         client_table[default_admin]["password"] = default_admin_pass;
         local access = {};
         access["read"] = true;
