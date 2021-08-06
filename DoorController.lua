@@ -13,9 +13,25 @@ local event = require("event")
 --global
 local modem = com.modem;
 
+--Events
+function EventHandling(event)
+    for i = 1, #event do
+        io.write(tostring(event[i]) .. " ")
+    end
+    io.write("\n")
+
+    if event[1] == "interrupted" then
+        os.exit();
+    end
+end
 
 function main()
     modem.open(port)
+
+    while true do
+        local event = {event.pull()}
+        EventHandling(event)
+    end
 end
 
 main()
