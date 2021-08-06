@@ -25,7 +25,7 @@ function EventHandling(event)
     end
 
     if event[1] == "modem_message" then
-
+        EventModemMessage(event)
     end
 end
 function EventModemMessage(event)
