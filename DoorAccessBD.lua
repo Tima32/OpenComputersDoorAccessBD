@@ -129,7 +129,7 @@ function main() --main
         return;
     end
     modem.open(port);
-    modem.broadcast(port, "DoorAccessBD:Started");
+    modem.broadcast(door_controllers_port, "DoorAccessBD:Started");
 
     while true do
         local event = {event.pull()}
