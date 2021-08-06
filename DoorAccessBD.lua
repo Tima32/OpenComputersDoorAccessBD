@@ -2,7 +2,7 @@
 local port = 32001;
 local client_table_adr = "client_table.json";
 local door_controller_table_adr = "door_controller_table.json"
-local bd_adr = "DoorAccessBD.json"
+local bd_adr = "door_access_BD.json"
 local default_admin = "admin"     
 local default_admin_pass = "admin" --edit in $client_table_adr file
 
