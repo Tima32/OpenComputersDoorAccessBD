@@ -53,7 +53,7 @@ function LoadDoorTable()
     if file == nil then
         print("NotOpen")
         door_controller_table[1] = "86a873b5-bc"
-        SaveDoor()
+        SaveDoorTable()
     end
 
     if file ~= nil then
@@ -62,7 +62,7 @@ function LoadDoorTable()
         file:close();
     end
 end
-function SaveDoor()
+function SaveDoorTable()
     local table = ser.serialize(door_controller_table);
     local file = io.open(door_controller_table_adr, "w");
     file:write(table);
