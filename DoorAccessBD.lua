@@ -113,7 +113,7 @@ function EventHandling(event)
     end
     io.write("\n")
 
-    if event[i] == "interrupted" then
+    if event[1] == "interrupted" then
         os.exit();
     end
 end
@@ -128,6 +128,7 @@ function main() --main
         return;
     end
     modem.open(port);
+    modem.broadcast(port, "DoorAccessBD:Started");
 
     while true do
         local event = {event.pull()}
