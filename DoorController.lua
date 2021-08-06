@@ -26,6 +26,11 @@ function EventHandling(event)
 end
 
 function main()
+
+    if modem == nil then
+        print("Error: no modem")
+        return;
+    end
     modem.open(port)
 
     while true do
