@@ -56,7 +56,7 @@ function LoadDoorTable()
         file:close();
     end
 end
-function SaveDoor() then
+function SaveDoor()
     local table = ser.serialize(door_controller_table);
     local file = io.open(door_controller_table_adr, "w");
     file:write(table);
