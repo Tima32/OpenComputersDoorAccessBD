@@ -1,5 +1,6 @@
 --propirties
 local port = 32001;
+local door_controllers_port = 32002;
 local client_table_adr = "client_table.json";
 local door_controller_table_adr = "door_controller_table.json"
 local bd_adr = "door_access_BD.json"
