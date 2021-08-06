@@ -63,7 +63,10 @@ end
 
 
 function EventHandling(event)
-    print(event)
+    for i = 1, #event do
+        io.write(tostring(event[i]) .. " ")
+    end
+    io.write("\n")
 end
 
 function main() --main
@@ -76,7 +79,7 @@ function main() --main
     end
     modem.open(port);
 
-    for true do
+    while true do
         local event = {event.pull()}
         EventHandling(event)
     end
