@@ -51,6 +51,7 @@ function LoadDoorTable()
     local file =  io.open(door_controller_table_adr, "r")
 
     if file == nil then
+        print("NotOpen")
         door_controller_table[1] = "86a873b5-bc"
         SaveDoor()
     end
