@@ -1,7 +1,7 @@
 --propirties
 local port = 32001;
 local client_table_adr = "client_table.json";
-local bd_f = "DoorAccessBD.json"
+local bd_adr = "DoorAccessBD.json"
 local default_admin = "admin"     
 local default_admin_pass = "admin" --edit in $client_table_adr file
 
@@ -12,13 +12,10 @@ local event = require("event")
 
 --global
 local client_table = {}
+local bd = {}
+local modem = com.modem;
 
-function SaveClientTable()
-    local table = ser.serialize(client_table);
-    local file = io.open(client_table_adr, "w");
-    file:write(table);
-    file:close();
-end
+--Client table
 function LoadClientTable()
     local file =  io.open(client_table_adr, "r")
     if file ~= nil then
@@ -40,9 +37,50 @@ function LoadClientTable()
         SaveClientTable();
     end
 end
+function SaveClientTable()
+    local table = ser.serialize(client_table);
+    local file = io.open(client_table_adr, "w");
+    file:write(table);
+    file:close();
+end
 
-function main()
+--BD
+function LoadBD()
+    local file =  io.open(bd_adr, "r")
+    if file ~= nil then
+        local table = file:read();
+        bd = ser.unserialize(table);
+        file:close();
+    end
+end
+function SaveBD()
+    local table = ser.serialize(bd);
+    local file = io.open(bd_adr, "w");
+    file:write(table);
+    file:close();
+end
+
+
+
+function EventHandling(event)
+    print(event)
+end
+
+function main() --main
     LoadClientTable();
+    LoadBD();
+
+    if modem == nil then
+        print("Error: no modem")
+        return;
+    end
+    modem.open(port);
+
+    for true do
+        local event = {event.pull()}
+        EventHandling(event)
+    end
+
 end
 
 
