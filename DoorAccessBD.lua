@@ -50,6 +50,11 @@ end
 function LoadDoorTable()
     local file =  io.open(door_controller_table_adr, "r")
 
+    if file == nil then
+        door_controller_table[1] = "86a873b5-bc"
+        SaveDoor()
+    end
+
     if file ~= nil then
         local table = file:read();
         door_controller_table = ser.unserialize(table);
