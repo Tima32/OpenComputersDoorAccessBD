@@ -116,6 +116,7 @@ end
 
 function main() --main
     LoadClientTable();
+    LoadDoorTable();
     LoadBD();
 
     if modem == nil then
