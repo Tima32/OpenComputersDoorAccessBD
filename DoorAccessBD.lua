@@ -106,12 +106,16 @@ function SaveBD()
 end
 
 
-
+--Events
 function EventHandling(event)
     for i = 1, #event do
         io.write(tostring(event[i]) .. " ")
     end
     io.write("\n")
+
+    if event[i] == "interrupted" then
+        os.exit();
+    end
 end
 
 function main() --main
